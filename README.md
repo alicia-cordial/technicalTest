@@ -44,12 +44,15 @@ Send us the project and answer to those simple questions :
 
 I found quite a bit of bugs. The problem was, I found it hard to solved this bugs because I didn't have access to the Database.
 
--  I can now update my user infos from the section "My account" but the one with a ton of infos noting happened and I couldn't find the problem because I couldn't test the "route" and I didn't have access to the Database.
+-  I can now update my user infos from the section "My account".
 
-- I can now add new users but I failed to update the users infos because I couldn't find the problem and I couldn't test the "route" and I didn't have access to the Database.
+- I can now add new users.
+
+- I can new update the users.
 
 - There was one when I try to enter a specific project, I couldn't find the infos and I couldn't access the "routes" once again.
 
 I find it difficult because I couldn't see precisely where the bugs came from (if it was the requests or the code).
+I couldn't do the part about the project and I didn't have time to add a new feature.
 
-If I could have solved the bugs I would have done a notification system for the startup so they know if they make a financial deficit or not and maybe give them tips or maybe put them in contact with a specialist.
+If I could have solved the bugs I would have done a notification system for the startup so they know if they make a financial deficit or not and maybe give them tips or maybe put them in contact with a specialist. I would have add an avatar to make it more personal.
