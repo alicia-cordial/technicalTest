@@ -40,19 +40,37 @@ router.get("/:id", passport.authenticate("user", { session: false }), async (req
   }
 });
 
+// router.post("/", passport.authenticate("user", { session: false }), async (req, res) => {
+//   try {
+//     if (!validatePassword(req.body.password)) return res.status(400).send({ ok: false, user: null, code: PASSWORD_NOT_VALIDATED });
+
+//     const user = await UserObject.create({ ...req.body, organisation: req.user.organisation });
+
+//     return res.status(200).send({ data: user, ok: true });
+//   } catch (error) {
+//     if (error.code === 11000) return res.status(409).send({ ok: false, code: USER_ALREADY_REGISTERED });
+//     console.log(error);
+//     return res.status(500).send({ ok: false, code: SERVER_ERROR });
+//   }
+// });
+
 router.post("/", passport.authenticate("user", { session: false }), async (req, res) => {
   try {
-    if (!validatePassword(req.body.password)) return res.status(400).send({ ok: false, user: null, code: PASSWORD_NOT_VALIDATED });
+    const { password, username, email } = req.body;
 
-    const user = await UserObject.create({ ...req.body, organisation: req.user.organisation });
+    if (password && !validatePassword(password)) return res.status(200).send({ ok: false, user: null, code: PASSWORD_NOT_VALIDATED });
 
-    return res.status(200).send({ data: user, ok: true });
+    const user = await UserObject.create({ name: username, email, password, ...req.body, organisation: req.user.organisation });
+
+    return res.status(200).send({ user, ok: true });
   } catch (error) {
+    console.log("e", error);
     if (error.code === 11000) return res.status(409).send({ ok: false, code: USER_ALREADY_REGISTERED });
     console.log(error);
     return res.status(500).send({ ok: false, code: SERVER_ERROR });
   }
 });
+
 
 router.get("/", passport.authenticate("user", { session: false }), async (req, res) => {
   try {
