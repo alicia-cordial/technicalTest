@@ -17,9 +17,10 @@ router.get("/list", passport.authenticate("user", { session: false }), async (re
   }
 });
 
+// error found findOne and not find
 router.get("/:id", passport.authenticate("user", { session: false }), async (req, res) => {
   try {
-    const data = await ProjectObject.find({ _id: req.params.id });
+    const data = await ProjectObject.findOne({ _id: req.params.id });
     return res.status(200).send({ ok: true, data });
   } catch (error) {
     console.log(error);
